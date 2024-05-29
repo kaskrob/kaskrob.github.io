@@ -42,7 +42,7 @@ body {
 
 #equals {
     grid-column: span 2;
-    background-color: #f08a24;
+    background-color: pink;
     color: white;
 }
 
