@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const buttons = document.querySelectorAll('.button');
     const clearButton = document.getElementById('clear');
     const equalsButton = document.getElementById('equals');
+    const lightThemeButton = document.getElementById('light-theme');
+    const darkThemeButton = document.getElementById('dark-theme');
     
     let currentInput = '';
     let operator = '';
@@ -48,5 +50,15 @@ document.addEventListener("DOMContentLoaded", function() {
             operator = '';
             resultDisplayed = true;
         }
+    });
+
+    lightThemeButton.addEventListener('click', function() {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+    });
+
+    darkThemeButton.addEventListener('click', function() {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
     });
 });
