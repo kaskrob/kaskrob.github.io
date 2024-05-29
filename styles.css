@@ -20,9 +20,11 @@ button {
 
 .calculator {
     display: grid;
-    grid-template-columns: repeat(4, 80px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 80px);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: minmax(80px, auto) repeat(5, 60px);
     gap: 10px;
+    width: 90%;
+    max-width: 400px;
 }
 
 .display {
@@ -87,4 +89,11 @@ body.dark-theme {
     --equals-text-color: #fff;
     --clear-bg-color: #ff3b30;
     --clear-text-color: #fff;
+}
+
+/* Larger screens */
+@media (min-width: 600px) {
+    .calculator {
+        grid-template-rows: minmax(120px, auto) repeat(5, 80px);
+    }
 }
