@@ -13,8 +13,16 @@ document.addEventListener("DOMContentLoaded", function() {
             const value = this.getAttribute('data-value');
             
             if (value) {
-                currentInput += value;
-                display.textContent = currentInput;
+                if (value === '+' || value === '-' || value === '*' || value === '/') {
+                    if (currentInput) {
+                        previousInput = currentInput;
+                        currentInput = '';
+                    }
+                    operator = value;
+                } else {
+                    currentInput += value;
+                    display.textContent = currentInput;
+                }
             }
         });
     });
@@ -34,22 +42,5 @@ document.addEventListener("DOMContentLoaded", function() {
             currentInput = '';
             operator = '';
         }
-    });
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const value = this.getAttribute('data-value');
-
-            if (value === '+' || value === '-' || value === '*' || value === '/') {
-                if (currentInput) {
-                    previousInput = currentInput;
-                    currentInput = '';
-                }
-                operator = value;
-            } else if (value) {
-                currentInput += value;
-                display.textContent = currentInput;
-            }
-        });
     });
 });
