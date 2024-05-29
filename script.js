@@ -7,22 +7,27 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentInput = '';
     let operator = '';
     let previousInput = '';
-    
+    let resultDisplayed = false;
+
     buttons.forEach(button => {
         button.addEventListener('click', function() {
             const value = this.getAttribute('data-value');
-            
-            if (value) {
-                if (value === '+' || value === '-' || value === '*' || value === '/') {
-                    if (currentInput) {
-                        previousInput = currentInput;
-                        currentInput = '';
-                    }
-                    operator = value;
+
+            if (value === '+' || value === '-' || value === '*' || value === '/') {
+                if (currentInput && !resultDisplayed) {
+                    previousInput = currentInput;
+                    currentInput = '';
+                }
+                operator = value;
+                display.textContent = operator;
+            } else if (value) {
+                if (resultDisplayed) {
+                    currentInput = value;
+                    resultDisplayed = false;
                 } else {
                     currentInput += value;
-                    display.textContent = currentInput;
                 }
+                display.textContent = currentInput;
             }
         });
     });
@@ -41,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
             previousInput = result;
             currentInput = '';
             operator = '';
+            resultDisplayed = true;
         }
     });
 });
